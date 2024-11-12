@@ -1,2 +1,4 @@
 config.json
 topg.json
+fly.toml
+Dockerfile
