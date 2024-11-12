@@ -3,7 +3,7 @@ import discord
 from discord.ext import commands
 import json
 import random
-
+import os
 
 intents = discord.Intents.default()
 intents.members = True
@@ -68,6 +68,10 @@ def quote(query):
             json_data = json.load(f)
         quote = f"**{random.choice(json_data)}**\n\n*— Andrew Tate*"
         return quote
+    elif query in ['stallman']:
+        with open('stallman.json','r') as f:
+            json_data = json.load(f)
+        quote = f"**{random.choice(json_data)}**\n\n*— Richard Stallman*"
          
         
 
@@ -87,17 +91,47 @@ async def pand(ctx, query: str):
     
     await ctx.send(quote(query))
 
-    
 
-with open('config.json','r') as f:
-     config = json.load(f)
-TOKEN = config['TOKEN']
+
+
+@bot.command(help="Listi az pand haye mojood")
+async def help(ctx, query: str):
+    help_messages = """
+    **Pand haye mojood:**
+    - 'random': - In ke maloome chie khob ahmaq
+    - 'stoic': - Stoic pands
+    - 'stoic2': - Stoic pands from another source
+    - 'programming': - Programming pands
+    - 'suntzu': - Sun Tzu pands
+    - 'topg': - Andrew Tate pands
+    - 'stallman': - Richard Stallman pands
+
+    """
+    await ctx.send(help_messages)
+
+
+
+#with open('config.json','r') as f:
+ #    config = json.load(f)
+
+
+TOKEN = os.getenv("TOKEN")
 
 if TOKEN is None:
     print("Error: DISCORD_TOKEN environment variable not set.")
 else:
    
     bot.run(TOKEN)
+
+
+
+#TOKEN = config['TOKEN']
+
+#if TOKEN is None:
+   # print("Error: DISCORD_TOKEN environment variable not set.")
+#else:
+   
+   # bot.run(TOKEN)
 
     
 
