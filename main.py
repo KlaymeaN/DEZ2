@@ -12,7 +12,7 @@ intents.message_content = True
 
 bot = commands.Bot(command_prefix="#", intents=intents)
 
-
+#I AM WRITING THIS USING VIM
 
 
 def normalize_query(query):
