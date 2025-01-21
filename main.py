@@ -12,19 +12,12 @@ intents.message_content = True
 
 bot = commands.Bot(command_prefix="#", intents=intents)
 
-#I AM WRITING THIS USING VIM
 
 
 def normalize_query(query):
     query = query.lower()
     query = query.replace(" ", "")
     return query
-
-
-
-
-
-
 
 
 def quote(query):
@@ -186,15 +179,6 @@ def quote(query):
         embed.set_image(url=f"attachment://{image_file}")
         
         return embed, file
-
-    
-
-
-
-         
-        
-
-
 
 
 
